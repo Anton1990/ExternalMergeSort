@@ -43,7 +43,7 @@ public class EndToEndTests : IDisposable
         var config = new SortConfig
         {
             ChunkSizeBytes = 1024, // very small chunks to test multi-chunk
-            TempDirectory = _tempDir,
+            TempDirectory = Path.Combine(_tempDir, "chunks"),
         };
 
         var sorter = new ExternalMergeSorter(config);
@@ -67,7 +67,7 @@ public class EndToEndTests : IDisposable
 
         File.WriteAllText(inputPath, "1. Hello\n");
 
-        var config = new SortConfig { TempDirectory = _tempDir };
+        var config = new SortConfig { TempDirectory = Path.Combine(_tempDir, "chunks") };
         var sorter = new ExternalMergeSorter(config);
         sorter.Sort(inputPath, outputPath);
 
@@ -93,7 +93,7 @@ public class EndToEndTests : IDisposable
         var config = new SortConfig
         {
             ChunkSizeBytes = 50,
-            TempDirectory = _tempDir,
+            TempDirectory = Path.Combine(_tempDir, "chunks"),
         };
 
         var sorter = new ExternalMergeSorter(config);
@@ -132,7 +132,7 @@ public class EndToEndTests : IDisposable
         var config = new SortConfig
         {
             ChunkSizeBytes = 2 * 1024, // 2 KB chunks = many chunks
-            TempDirectory = _tempDir,
+            TempDirectory = Path.Combine(_tempDir, "chunks"),
         };
 
         var sorter = new ExternalMergeSorter(config);
@@ -155,7 +155,7 @@ public class EndToEndTests : IDisposable
 
         File.WriteAllText(inputPath, "");
 
-        var config = new SortConfig { TempDirectory = _tempDir };
+        var config = new SortConfig { TempDirectory = Path.Combine(_tempDir, "chunks") };
         var sorter = new ExternalMergeSorter(config);
         sorter.Sort(inputPath, outputPath);
 
