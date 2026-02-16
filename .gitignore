@@ -1,0 +1,18 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.dll
+*.exe
+*.pdb
+
+## Visual Studio
+.vs/
+
+## Temporary files
+chunks/
+in.txt
+out.txt
+BenchmarkDotNet.Artifacts/
